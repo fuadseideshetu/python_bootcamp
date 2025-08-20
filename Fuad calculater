@@ -1,15 +1,12 @@
 
-
 def calculator():
     print("Scientific Calculator")
     try:
         while True:
-            op = input("Enter operator (+, -, *, /, **, sin, cos, tan, cot, sqrt) or 'exit' to quit: ").strip().lower()
-            
+            op = input("Enter operator (+, -, *, /, **, sin, cos, tan, cot, sqrt) or 'exit' to quit: ").strip().lower()   
             if op == "exit":
                 print("Exiting calculator...")
                 break
-
             list_op = ["+", "-", "*", "/", "**", "sin", "cos", "tan", "cot", "sqrt"]
             if op not in list_op:
                 print("Invalid operator. Try again.")
@@ -77,10 +74,8 @@ def calculator():
                 else:
                     print("Power operation requires exactly 2 numbers.")
                     continue
-
             if result is not None:
                 print(f"Result: {result}")
-
     except Exception as e:
         print(f"An error occurred: {e}")
         print("developed by: Fuad Seid")
