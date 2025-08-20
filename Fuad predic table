@@ -78,7 +78,7 @@ elements = {
         "atomic_mass": 20.180,
         "mass_number": 20,
         "group": 18
-    }
+    },
     11: {
         "symbol": "Na",
         "name": "Sodium",
@@ -238,7 +238,7 @@ elements = {
         "atomic_mass": 65.38,
         "mass_number": 65,
         "group": 12
-    }
+    },
     31: {
         "symbol": "Ga",
         "name": "Gallium",
@@ -398,7 +398,7 @@ elements = {
         "atomic_mass": 118.71,
         "mass_number": 119,
         "group": 14
-    }
+    },
     51: {
         "symbol": "Sb",
         "name": "Antimony",
