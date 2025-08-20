@@ -1,83 +1,59 @@
-def calculator():
-    print("Standard Calculator")
-    try:
-        while True:
-            op = input("Enter the operator [+,-,*,/,**] or type 'exit' to quit: ")
-            if op.lower().strip() == "exit":
-                print("Exiting calculator")
-                break
-            list_op = ['+', '-', '*', '/', '**']
-            if op not in list_op:
-                print("Please enter the correct operator")
-                continue
-            try:
-                count = int(input("How many numbers do you want to enter? (at least 2): "))
-                if count < 2:
-                    print("Please enter at least 2 numbers")
-                    continue
-            except ValueError:
-                print("Invalid input. Please enter an integer.")
-                continue
-            numbers = []
-            for i in range(count):
-                while True:
-                    try:
-                        num = float(input(f"Enter number {i+1}: "))
-                        if op == '/' and i > 0 and num == 0:
-                            print("Denominator can't be zero.")
-                            continue
-                        numbers.append(num)
-                        break
-                    except ValueError:
-                        print("Invalid input. Please enter a numeric value.")
-            try:
-                result = numbers[0]
-                for num in numbers[1:]:
-                    if op == '+':
-                        result += num
-                    elif op == '-':
-                        result -= num
-                    elif op == '*':
-                        result *= num
-                    elif op == '/':
-                        result /= num
-                    elif op == '**':
-                        result **= num
 
-                print(f"{' '.join(map(str, numbers))} = {result}")
-from tkinter.constants import NUMERIC
 
 def calculator():
-    print("Standard Calculator")
-
+    print("Scientific Calculator")
     try:
         while True:
-            op = input("Enter the operator (/ , * , - , + , ** ) or type 'exit' to quit: ").strip()
-            if op.lower() == "exit":
+            op = input("Enter operator (+, -, *, /, **, sin, cos, tan, cot, sqrt) or 'exit' to quit: ").strip().lower()
+            
+            if op == "exit":
                 print("Exiting calculator...")
                 break
-            list_op = ["/", "*", "-", "+", "**"]
-            if op not in list_op:
-                print("Please enter a valid operator.")
-                continue
 
+            list_op = ["+", "-", "*", "/", "**", "sin", "cos", "tan", "cot", "sqrt"]
+            if op not in list_op:
+                print("Invalid operator. Try again.")
+                continue
+            if op in ["sin", "cos", "tan", "cot", "sqrt"]:
+                try:
+                    num = float(input("Enter a number: "))
+                    if op == "sin":
+                        result = math.sin(math.radians(num))
+                    elif op == "cos":
+                        result = math.cos(math.radians(num))
+                    elif op == "tan":
+                        result = math.tan(math.radians(num))
+                    elif op == "cot":
+                        try:
+                            result = 1 / math.tan(math.radians(num))
+                        except ZeroDivisionError:
+                            print("Error: cot undefined for this input.")
+                            continue
+                    elif op == "sqrt":
+                        if num < 0:
+                            print("Error: Cannot take square root of negative number.")
+                            continue
+                        result = math.sqrt(num)
+
+                    print(f"Result: {result}")
+                    continue
+                except ValueError:
+                    print("Please enter a valid number.")
+                    continue
             numbers = []
             while True:
                 number = input("Enter a number or '=' to calculate: ").strip()
-
                 if number == "=":
                     if len(numbers) < 2:
                         print("Please enter at least 2 numbers.")
                         continue
                     break
-
                 try:
                     num = float(number)
                     numbers.append(num)
                 except ValueError:
                     print("Please enter a valid number.")
-                    continue
-            if op == "+":
+                    continue             if op == "+":
                 result = sum(numbers)
             elif op == "-":
                 result = numbers[0]
@@ -107,6 +83,5 @@ def calculator():
 
     except Exception as e:
         print(f"An error occurred: {e}")
-        print("developed by:fuad seid")
-
+        print("developed by: Fuad Seid")
 calculator()
