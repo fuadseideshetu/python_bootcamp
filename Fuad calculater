@@ -50,7 +50,8 @@ def calculator():
                     numbers.append(num)
                 except ValueError:
                     print("Please enter a valid number.")
-                    continue             if op == "+":
+                    continue          
+           if op == "+":
                 result = sum(numbers)
             elif op == "-":
                 result = numbers[0]
